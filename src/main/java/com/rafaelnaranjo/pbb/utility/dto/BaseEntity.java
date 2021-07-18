@@ -1,4 +1,4 @@
-package com.rafaelnaranjo.pbb.utility;
+package com.rafaelnaranjo.pbb.utility.dto;
 
 import lombok.Getter;
 import lombok.Setter;
