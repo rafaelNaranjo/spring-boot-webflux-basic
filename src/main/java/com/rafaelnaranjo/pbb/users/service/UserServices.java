@@ -14,9 +14,9 @@ public class UserServices {
     private final UserRepository userRepository;
 
     public Mono<Page<User>> findAllUser(Integer page, Integer itemsByPage){
-        return Mono.just(userRepository.findAll(PageRequest.of(page, itemsByPage)));
+        return Mono.fromCallable(()->userRepository.findAll(PageRequest.of(page, itemsByPage)));
     }
     public Mono<User> findUserByName(String name){
-        return Mono.just(userRepository.findUserByName(name));
+        return Mono.fromCallable(()->userRepository.findUserByName(name));
     }
 }
