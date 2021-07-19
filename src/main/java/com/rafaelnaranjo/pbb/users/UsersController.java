@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost"})
 public class UsersController {
 
     private final UserServices userServices;
@@ -18,7 +19,6 @@ public class UsersController {
     @GetMapping
     public Mono<Page<User>> indexView(@RequestParam(name = "page", defaultValue = "0") Integer page, @RequestParam(name = "items", defaultValue = "15") Integer items){
         return userServices.findAllUser(page, items)
-                .onErrorResume(res -> Mono.just(Page.empty()))
                 .onErrorReturn(Page.empty());
     }
     @GetMapping("/{name}")
